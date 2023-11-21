@@ -22,6 +22,20 @@ locals {
 # DB Subnet Group
 ################################################################################
 
+/**
+ * Resource: aws_db_subnet_group
+ * Description: Manages a DB subnet group within AWS RDS.
+ * 
+ * This resource creates a DB subnet group for an Aurora cluster.
+ * It is conditionally created based on the values of local.create and var.create_db_subnet_group.
+ * 
+ * Parameters:
+ * - name (string): The name of the DB subnet group.
+ * - description (string): The description of the DB subnet group.
+ * - subnet_ids (list): A list of subnet IDs to associate with the DB subnet group.
+ * - tags (map): A map of tags to assign to the DB subnet group.
+ */
+
 resource "aws_db_subnet_group" "this" {
   count = local.create && var.create_db_subnet_group ? 1 : 0
 
