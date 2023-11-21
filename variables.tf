@@ -13,7 +13,12 @@ variable "name" {
 variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)
-  default     = {}
+  default     = {
+    Name        = "AWS RDS Cluster"
+    Product     = "RDS Postgresql"
+    Environment = "Sandbox"
+    Owner       = "Me, Myself"
+  }
 }
 
 ################################################################################
